@@ -86,12 +86,22 @@ public class GameScreen implements Screen {
 
 	private void addFood() {
 		selectFood();
+
+		/*
 		int rand = MathUtils.random(0, 800 - Assets.foodImage.getWidth());
 		food.x = Math.round(rand / 32) * 32;
 		rand = MathUtils.random(0, 480 - Assets.foodImage.getWidth());
 		food.y = Math.round(rand / 32) * 32;
-		// System.out.println(" x " + food.x + " y " + food.y);
+		
+		*/
+		int rand = MathUtils.random(0, 23);
+		food.x = rand * 32;
+		
+		rand = MathUtils.random(0, 13);
+		food.y = rand * 32;
+		
 		//Save Score
+		Settings.addScore(score);
 		Settings.save();
 	}
 
@@ -106,7 +116,7 @@ public class GameScreen implements Screen {
 			direction = 3;
 		}
 
-		if ((System.currentTimeMillis() - lastChangeTime) >= 500) {
+		if ((System.currentTimeMillis() - lastChangeTime) >= 100) {
 			lastChangeTime = System.currentTimeMillis();
 			switch (direction) {
 			case 0:
@@ -350,27 +360,27 @@ public class GameScreen implements Screen {
 
 		switch (direction) {
 		case 0:
-			newTail.x = tailRect.x - 30;
+			newTail.x = tailRect.x - 32;
 			newTail.y = tailRect.y;
 			break;
 		case 1:
-			newTail.x = tailRect.x + 30;
+			newTail.x = tailRect.x + 32;
 			newTail.y = tailRect.y;
 			break;
 		case 2:
 			newTail.x = tailRect.x;
-			newTail.y = tailRect.y + 30;
+			newTail.y = tailRect.y + 32;
 			break;
 		case 3:
 			newTail.x = tailRect.x;
-			newTail.y = tailRect.y - 30;
+			newTail.y = tailRect.y - 32;
 			break;
 
 		default:
 			break;
 		}
 
-		// newTail.y = tailRect.y - 30;
+		// newTail.y = tailRect.y - 32;
 		// newTail.x = tailRect.x;
 		tail.add(newTail);
 

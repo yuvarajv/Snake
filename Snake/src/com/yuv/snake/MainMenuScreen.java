@@ -26,7 +26,10 @@ public class MainMenuScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 
 		game.batch.begin();
-		game.font.draw(game.batch, "Tap to begin!", 100, 100);
+		game.font.draw(game.batch, "Tap to begin!", 400, 100);
+		
+		game.font.draw(game.batch, "High Scores !" + Settings.getHighScoreAsString(), 360, 200);
+		
 		game.batch.end();
 		if (Gdx.input.isKeyPressed(Keys.X)) {
 			SnakeGame.handleBackgroundSound();
